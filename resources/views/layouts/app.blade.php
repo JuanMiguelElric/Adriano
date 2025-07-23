@@ -10,7 +10,47 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
+        <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .sidebar {
+            height: 100vh;
+            background: #0A3D62;
+            color: #fff;
+            padding: 20px;
+        }
+        .sidebar h4 {
+            color: #C9A646;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .sidebar a {
+            color: #fff;
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            transition: all 0.3s ease;
+        }
+        .sidebar a:hover {
+            background: #C9A646;
+            color: #0A3D62;
+            font-weight: bold;
+        }
+        .content {
+            padding: 30px;
+        }
+        .btn-primary {
+            background-color: #C9A646;
+            border-color: #C9A646;
+        }
+        .btn-primary:hover {
+            background-color: #b68f39;
+            border-color: #b68f39;
+        }
+    </style>
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
@@ -28,9 +68,7 @@
             @endif
 
             <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+      
         </div>
     </body>
 </html>
