@@ -81,6 +81,18 @@
                                     </td>
                                     <td>{{ $t->description }}</td>
                                     <td class="text-muted">{{ $t->created_at->format('d/m/Y H:i') }}</td>
+
+                                         <td>
+                                            @if($t->status === 'completed')
+                                                <button class="btn btn-sm btn-danger"
+                                                        onclick="openRefundModal({{ $t->id }})">
+                                                    🔙 Reembolsar
+                                                </button>
+                                            @else
+                                                <span class="badge bg-secondary">Já Reembolsado</span>
+                                            @endif
+                                        </td>
+
                                 </tr>
                             @empty
                                 <tr>

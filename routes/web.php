@@ -45,6 +45,7 @@ Route::middleware(['auth','user-access:cliente'])->group(function(){
     Route::post('/deposit', [WalletController::class, 'deposit'])->name('wallet.deposit');
     Route::post('/withdraw', [WalletController::class, 'withdraw'])->name('wallet.withdraw');
     Route::post('/transfer', [WalletController::class, 'transfer'])->name('wallet.transfer');
+    Route::post('/wallet/refund', [WalletController::class, 'refund'])->name('wallet.refund');
 
 });
 require __DIR__.'/auth.php';

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Wallet;
 
 use App\Http\Controllers\Controller;
+use App\Services\ReversalService;
 use App\Services\WalletService;
 use App\Strategies\DepositStrategy;
 use App\Strategies\WithdrawStrategy;
@@ -53,4 +54,15 @@ class WalletController extends Controller
             return back()->with('error', $e->getMessage());
         }
     }
+
+    public function refund(Request $request, ReversalService $reversalService)
+    {
+        $request->validate([
+            'transaction_id' => 'required|exists:transactions,id',
+            'reason' => 'nullable|string|max:255'
+        ]);
+
+        return $reversalService->Reembolsar((object) $request->all());
+    }
+
 }
