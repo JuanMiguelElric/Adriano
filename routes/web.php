@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Wallet\WalletController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,6 +42,9 @@ Route::middleware(['auth','user-access:admin'])->group(function(){
 Route::middleware(['auth','user-access:cliente'])->group(function(){
 
     Route::get('/dashboard/cliente',[HomeController::class,'DashboardCliente'])->name('cliente.dashboard');
+    Route::post('/deposit', [WalletController::class, 'deposit'])->name('wallet.deposit');
+    Route::post('/withdraw', [WalletController::class, 'withdraw'])->name('wallet.withdraw');
+    Route::post('/transfer', [WalletController::class, 'transfer'])->name('wallet.transfer');
 
 });
 require __DIR__.'/auth.php';

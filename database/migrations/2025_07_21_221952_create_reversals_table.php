@@ -13,12 +13,22 @@ return new class extends Migration
     {
         Schema::create('reversals', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('transaction_id')->constrained()->onDelete('cascade');
+
+            // Transação que foi revertida
+            $table->foreignId('transaction_id')
+                  ->constrained()
+                  ->onDelete('cascade');
+
+            // Motivo do estorno/reversão
             $table->text('reason')->nullable();
+
+            // Status da reversão (caso queira expandir no futuro)
+            $table->enum('status', ['pending', 'approved', 'rejected'])
+                  ->default('approved');
+
             $table->timestamps();
         });
     }
-
 
     /**
      * Reverse the migrations.

@@ -9,7 +9,7 @@ class Reversal extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['transaction_id', 'reason'];
+    protected $fillable = ['transaction_id', 'reason','reversed_at'];
 
     // Relacionamento: Uma reversão pertence a uma transação
     public function transaction()

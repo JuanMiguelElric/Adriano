@@ -11,8 +11,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(
+            \App\Interfaces\Repositories\WalletRepositoryInterface::class,
+            \App\Repositories\WalletRepository::class
+        );
+
+        $this->app->bind(
+            \App\Interfaces\Repositories\TransactionRepositoryInterface::class,
+            \App\Repositories\TransactionRepository::class
+        );
     }
+
 
     /**
      * Bootstrap any application services.

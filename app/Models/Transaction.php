@@ -9,7 +9,14 @@ class Transaction extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['wallet_id', 'type', 'amount', 'transfer_to', 'status'];
+
+        protected $fillable = [
+        'wallet_id',
+        'type',        // deposit, withdraw, transfer
+        'amount',
+        'description',
+        'recipient_id' // usado para transferências
+    ];
 
     // Relacionamento: Uma transação pertence a uma carteira
     public function wallet()

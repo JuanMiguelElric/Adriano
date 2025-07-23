@@ -13,15 +13,31 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+
+            // Carteira que realizou a transação
             $table->foreignId('wallet_id')->constrained()->onDelete('cascade');
-            $table->enum('type', ['deposit', 'transfer'])->index();
+
+            // Tipo da transação
+            $table->enum('type', ['deposit', 'withdraw', 'transfer'])->index();
+
+            // Valor da transação
             $table->decimal('amount', 15, 2);
-            $table->foreignId('transfer_to')->nullable()->constrained('wallets')->onDelete('cascade'); // para transferências
+
+            // Destinatário (apenas para transferências)
+            $table->foreignId('transfer_to')
+                  ->nullable()
+                  ->constrained('wallets')
+                  ->onDelete('cascade');
+
+            // Status da transação (caso tenha sido estornada)
             $table->enum('status', ['completed', 'reversed'])->default('completed');
+
+            // Descrição da transação
+            $table->string('description')->nullable();
+
             $table->timestamps();
         });
     }
-
 
     /**
      * Reverse the migrations.
