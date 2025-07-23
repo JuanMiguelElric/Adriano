@@ -1,10 +1,24 @@
 <x-app-layout>
 <div class="container-fluid">
     <div class="row">
-
-
         <!-- Conteúdo Principal -->
         <div class="col-md-9 p-4">
+
+            <!-- ✅ ALERTAS DE SUCESSO E ERRO -->
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>✅ Sucesso!</strong> {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
+            @if (session('error'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>❌ Erro!</strong> {{ session('error') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
             <!-- Card de Boas-Vindas -->
             <div class="card shadow-sm mb-4 border-0">
                 <div class="card-body">
@@ -53,11 +67,18 @@
                                 <tr>
                                     <td>{{ $t->id }}</td>
                                     <td>
-                                        <span class="badge @if($t->type == 'deposit') bg-success @elseif($t->type == 'withdraw') bg-warning @elseif($t->type == 'transfer') bg-primary @else bg-secondary @endif">
+                                        <span class="badge 
+                                            @if($t->type == 'deposit') bg-success 
+                                            @elseif($t->type == 'withdraw') bg-warning
+                                            @elseif($t->type == 'transfer') bg-primary
+                                            @else bg-secondary
+                                            @endif">
                                             {{ ucfirst($t->type) }}
                                         </span>
                                     </td>
-                                    <td class="fw-bold text-dark">R$ {{ number_format($t->amount, 2, ',', '.') }}</td>
+                                    <td class="fw-bold text-dark">
+                                        R$ {{ number_format($t->amount, 2, ',', '.') }}
+                                    </td>
                                     <td>{{ $t->description }}</td>
                                     <td class="text-muted">{{ $t->created_at->format('d/m/Y H:i') }}</td>
                                 </tr>
@@ -74,5 +95,5 @@
     </div>
 </div>
 </x-app-layout>
-@include('partials.wallet-modals')
 
+@include('partials.wallet-modals')

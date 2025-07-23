@@ -1,66 +1,113 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 💰 Projeto de Carteira Digital (Wallet System)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 📌 **Descrição**
+Este é um sistema de **carteira digital** desenvolvido em **Laravel**, com suporte a depósitos, saques, transferências e reversões de transações.  
+O projeto foi arquitetado para seguir rigorosamente os princípios **SOLID**, visando escalabilidade, manutenção e boas práticas de desenvolvimento.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## ✅ **Principais Funcionalidades**
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- 👤 **Cadastro e autenticação de usuários** com perfis **cliente** e **admin**  
+- 💵 **Depósito e saque** em carteira digital  
+- 🔄 **Transferência entre carteiras**  
+- ⬅️ **Reversão de transações** (funcionalidade prevista)  
+- 📊 **Dashboard para clientes** com histórico de transações  
+- 🛠 **Dashboard para administradores** com visão gerencial  
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 🏗 **Arquitetura e Princípios SOLID**
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+O projeto foi estruturado com **Services**, **Controllers** e **Models**, respeitando cada princípio:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### 1. **S - Single Responsibility Principle (Responsabilidade Única)**
+- Cada **Service** (ex.: `DepositService`, `WalletService`, `TransferService`) tem apenas uma responsabilidade.  
+- O **Controller** apenas orquestra requisições, sem regras de negócio.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 2. **O - Open/Closed Principle (Aberto/Fechado)**
+- Para adicionar um novo tipo de transação, basta criar um **novo Service**, sem modificar os já existentes.
 
-## Laravel Sponsors
+### 3. **L - Liskov Substitution Principle**
+- Todos os serviços podem ser substituídos ou estendidos sem quebrar o sistema, desde que respeitem as assinaturas.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 4. **I - Interface Segregation Principle**
+- Cada classe expõe apenas os métodos necessários para sua função (ex.: `DepositService` não conhece métodos de saque ou transferência).
 
-### Premium Partners
+### 5. **D - Dependency Inversion Principle**
+- Os **Controllers** não instanciam diretamente os Services. Eles recebem via **injeção de dependência** (DI do Laravel).
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+---
 
-## Contributing
+## ⚙ **Tecnologias Utilizadas**
+- **Laravel 10+**  
+- **PHP 8.1+**  
+- **MySQL**  
+- **Bootstrap 5**  
+- **Blade Components**  
+- **Arquitetura baseada em Services e Repositories**  
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## 🚀 **Instalação e Execução**
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### **1. Clone o repositório**
+```bash
+git clone https://github.com/seu-usuario/wallet-system.git
+cd wallet-system
+```
 
-## Security Vulnerabilities
+### **2. Instale as dependências**
+```bash
+composer install
+npm install && npm run dev
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### **3. Configure o `.env`**
+```env
+DB_DATABASE=wallet_db
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-## License
+### **4. Rode as migrations e seeders**
+```bash
+php artisan migrate --seed
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### **5. Inicie o servidor**
+```bash
+php artisan serve
+```
+
+Acesse: **[http://localhost:8000](http://localhost:8000)**
+
+---
+
+## 🔑 **Usuários de Teste**
+| Perfil   | Email              | Senha     |
+|----------|--------------------|-----------|
+| Admin    | admin@wallet.com   | password  |
+| Cliente  | cliente@wallet.com | password  |
+
+---
+
+## 🧪 **Testes**
+O projeto conta com testes unitários e de feature:
+```bash
+php artisan test
+```
+
+---
+
+## 📊 **Próximas Funcionalidades**
+- ✅ Relatórios gerenciais no dashboard do admin  
+- ✅ Reversão de transações  
+- ✅ Notificações em tempo real (broadcasting)
+
+---
+
+## 👨‍💻 **Autor**
+Desenvolvido por **[Seu Nome]**  
+**LinkedIn:** [seu-linkedin](#)  
+**Email:** seuemail@dominio.com  
