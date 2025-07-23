@@ -21,7 +21,7 @@ class WalletController extends Controller
 
         (new WalletService($strategy))->handle((object) $request->all());
 
-        return back()->with('success', 'Depósito realizado com sucesso!');
+        return back()->with('success', 'Depósito realizado com sucesso!',201);
     }
 
     public function withdraw(Request $request, WithdrawStrategy $strategy)
@@ -33,7 +33,7 @@ class WalletController extends Controller
 
         try {
             (new WalletService($strategy))->handle((object) $request->all());
-            return back()->with('success', 'Saque realizado com sucesso!');
+            return back()->with('success', 'Saque realizado com sucesso!',201);
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }
@@ -49,7 +49,7 @@ class WalletController extends Controller
 
         try {
             (new WalletService($strategy))->handle((object) $request->all());
-            return back()->with('success', 'Transferência realizada com sucesso!');
+            return back()->with('success', 'Transferência realizada com sucesso!',201);
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }

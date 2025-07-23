@@ -82,4 +82,12 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'user-access' => \App\Http\Middleware\UserAccess::class,
     ];
+
+    // app/Http/Middleware/VerifyCsrfToken.php
+    protected $except = [
+        '*', // Ignora CSRF em ambiente de teste
+    ];
+
+
+
 }

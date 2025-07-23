@@ -19,6 +19,8 @@ class PasswordResetTest extends TestCase
         $response->assertStatus(200);
     }
 
+
+
     public function test_reset_password_link_can_be_requested(): void
     {
         Notification::fake();
@@ -27,8 +29,9 @@ class PasswordResetTest extends TestCase
 
         $this->post('/forgot-password', ['email' => $user->email]);
 
-        Notification::assertSentTo($user, ResetPassword::class);
+        Notification::assertSentTo($user, \Illuminate\Auth\Notifications\ResetPassword::class);
     }
+
 
     public function test_reset_password_screen_can_be_rendered(): void
     {
