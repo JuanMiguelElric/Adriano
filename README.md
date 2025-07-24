@@ -53,8 +53,8 @@ O projeto foi estruturado com **Services**, **Controllers** e **Models**, respei
 
 ### **1. Clone o repositório**
 ```bash
-git clone https://github.com/seu-usuario/wallet-system.git
-cd wallet-system
+git clone https://github.com/JuanMiguelElric/Adriano
+cd Adriano
 ```
 
 ### **2. Instale as dependências**
@@ -108,6 +108,6 @@ php artisan test
 ---
 
 ## 👨‍💻 **Autor**
-Desenvolvido por **[Seu Nome]**  
-**LinkedIn:** [seu-linkedin](#)  
-**Email:** seuemail@dominio.com  
+Desenvolvido por **Juan Miguel**  
+**LinkedIn:** https://www.linkedin.com/in/juan-oliveira-095671239/ 
+**Email:** oliveirajuan243@gmail.com
