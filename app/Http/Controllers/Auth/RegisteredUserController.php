@@ -40,7 +40,7 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'], // Garantir que o email seja único
             'password' => ['required', 'confirmed', Rules\Password::defaults()], // Senha deve ser confirmada
-            'role' => ['required', 'integer', 'in:0,1'], // Verificar role (0 = Cliente, 1 = Gerente)
+            'role' => 0, // Verificar role (0 = Cliente, 1 = Gerente)
         ]);
 
         // Criação do usuário
